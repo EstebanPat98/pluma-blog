@@ -12,7 +12,9 @@
     {% for articulo in articulos %}
       <article class="rounded-2xl border border-white/10 bg-white/5 p-6 transition hover:-translate-y-1 hover:border-brand-500">
         <p class="text-xs font-semibold uppercase tracking-widest text-brand-400">{{ articulo.fecha }}</p>
-        <h2 class="mt-2 text-xl font-bold">{{ articulo.titulo }}</h2>
+        <h2 class="mt-2 text-xl font-bold">
+          <a href="/articulo/{{ articulo.id }}" class="hover:text-brand-400">{{ articulo.titulo }}</a>
+        </h2>
         <p class="mt-2 text-sm text-stone-400">{{ articulo.resumen }}</p>
       </article>
     {% endfor %}

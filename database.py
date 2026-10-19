@@ -52,9 +52,16 @@ def init_db():
     conn.commit()
     conn.close()
 
-
 def obtener_articulos():
     conn = get_connection()
     articulos = conn.execute("SELECT * FROM articulos ORDER BY id DESC").fetchall()
     conn.close()
     return articulos
+
+def obtener_articulo(articulo_id):
+    conn = get_connection()
+    articulo = conn.execute(
+        "SELECT * FROM articulos WHERE id = ?", (articulo_id,)
+    ).fetchone()
+    conn.close()
+    return articulo
