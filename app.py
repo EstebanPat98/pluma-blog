@@ -1,5 +1,5 @@
-from flask import Flask, render_template, abort
-from database import init_db, obtener_articulos, obtener_articulo
+from flask import Flask, render_template, abort, request, redirect, url_for
+from database import init_db, obtener_articulos, obtener_articulo, crear_articulo
 
 app = Flask(__name__)
 
@@ -18,6 +18,20 @@ def articulo(articulo_id):
     if articulo is None:
         abort(404)
     return render_template("articulo.html", articulo=articulo)
+
+
+@app.route("/admin/nuevo", methods=["GET", "POST"])
+def nuevo_articulo():
+    if request.method == "POST":
+        titulo = request.form["titulo"].strip()
+        resumen = request.form["resumen"].strip()
+        contenido = request.form["contenido"].strip()
+
+        if titulo and resumen and contenido:
+            crear_articulo(titulo, resumen, contenido)
+            return redirect(url_for("inicio"))
+
+    return render_template("nuevo.html")
 
 
 @app.route("/acerca")

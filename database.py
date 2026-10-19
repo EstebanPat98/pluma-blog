@@ -65,3 +65,15 @@ def obtener_articulo(articulo_id):
     ).fetchone()
     conn.close()
     return articulo
+
+from datetime import date
+
+
+def crear_articulo(titulo, resumen, contenido):
+    conn = get_connection()
+    conn.execute(
+        "INSERT INTO articulos (titulo, resumen, contenido, fecha) VALUES (?, ?, ?, ?)",
+        (titulo, resumen, contenido, date.today().isoformat()),
+    )
+    conn.commit()
+    conn.close()
