@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block titulo %}Acerca{% endblock %}
+
+{% block contenido %}
+  <h1 class="text-4xl font-extrabold tracking-tight">Acerca de Pluma</h1>
+  <p class="mt-4 text-lg text-stone-400">
+    Pluma es un blog creado con Flask y SQLite como parte de mi camino para aprender
+    desarrollo web full-stack. Aquí escribo lo que voy descubriendo.
+  </p>
+
+  <div class="mt-10 grid gap-4 sm:grid-cols-3">
+    <div class="rounded-2xl border border-white/10 bg-white/5 p-6 text-center">
+      <p class="text-2xl font-extrabold text-brand-400">Flask</p>
+      <p class="mt-1 text-sm text-stone-400">Backend en Python</p>
+    </div>
+    <div class="rounded-2xl border border-white/10 bg-white/5 p-6 text-center">
+      <p class="text-2xl font-extrabold text-brand-400">SQLite</p>
+      <p class="mt-1 text-sm text-stone-400">Base de datos</p>
+    </div>
+    <div class="rounded-2xl border border-white/10 bg-white/5 p-6 text-center">
+      <p class="text-2xl font-extrabold text-brand-400">Tailwind</p>
+      <p class="mt-1 text-sm text-stone-400">Diseño</p>
+    </div>
+  </div>
+{% endblock %}

@@ -65,7 +65,12 @@ def borrar(articulo_id):
 
 @app.route("/acerca")
 def acerca():
-    return "<h1>Acerca de Pluma</h1>"
+    return render_template("acerca.html")
+
+
+@app.errorhandler(404)
+def pagina_no_encontrada(error):
+    return render_template("404.html"), 404
 
 
 if __name__ == "__main__":
