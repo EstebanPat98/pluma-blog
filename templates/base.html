@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block titulo %}Pluma{% endblock %} | Pluma Blog</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
+          colors: {
+            brand: { 400: '#fb923c', 500: '#f97316', 600: '#ea580c' }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-stone-950 font-sans text-stone-100 antialiased">
+
+  <header class="border-b border-white/5">
+    <div class="mx-auto flex max-w-4xl items-center justify-between px-6 py-5">
+      <a href="/" class="text-xl font-extrabold tracking-tight">
+        Pluma<span class="text-brand-500">.</span>
+      </a>
+      <nav class="flex gap-6 text-sm font-medium text-stone-400">
+        <a href="/" class="transition hover:text-white">Inicio</a>
+        <a href="/acerca" class="transition hover:text-white">Acerca</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="mx-auto max-w-4xl px-6 py-12">
+    {% block contenido %}{% endblock %}
+  </main>
+
+  <footer class="border-t border-white/5 py-8 text-center text-sm text-stone-500">
+    © 2026 Pluma. Hecho con Flask y SQLite.
+  </footer>
+
+</body>
+</html>
