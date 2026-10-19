@@ -1,34 +1,15 @@
 from flask import Flask, render_template
+from database import init_db, obtener_articulos
 
 app = Flask(__name__)
 
-ARTICULOS = [
-    {
-        "titulo": "Mi primer día con Flask",
-        "resumen": "Cómo pasé de páginas estáticas a una aplicación que genera HTML con Python.",
-        "fecha": "12 oct 2026",
-    },
-    {
-        "titulo": "Por qué uso entornos virtuales",
-        "resumen": "Una caja aislada para las librerías de cada proyecto evita muchos dolores de cabeza.",
-        "fecha": "14 oct 2026",
-    },
-    {
-        "titulo": "Tailwind sin instalar nada",
-        "resumen": "El CDN es perfecto para prototipar, aunque en producción se instala bien.",
-        "fecha": "16 oct 2026",
-    },
-    {
-        "titulo": "Tailwind sin instalar nada",
-        "resumen": "El CDN es perfecto para prototipar, aunque en producción se instala bien.",
-        "fecha": "16 oct 2026",
-    },
-]
+init_db()
 
 
 @app.route("/")
 def inicio():
-    return render_template("index.html", articulos=ARTICULOS)
+    articulos = obtener_articulos()
+    return render_template("index.html", articulos=articulos)
 
 
 @app.route("/acerca")
