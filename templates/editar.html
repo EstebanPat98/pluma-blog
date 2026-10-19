@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block titulo %}Editar artículo{% endblock %}
+
+{% block contenido %}
+  <h1 class="text-3xl font-extrabold tracking-tight">Editar artículo</h1>
+
+  <form method="POST" class="mt-8 space-y-5">
+    <div>
+      <label for="titulo" class="mb-2 block text-sm font-medium">Título</label>
+      <input type="text" id="titulo" name="titulo" required value="{{ articulo.titulo }}"
+        class="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 outline-none transition focus:border-brand-500 focus:ring-2 focus:ring-brand-500/30">
+    </div>
+
+    <div>
+      <label for="resumen" class="mb-2 block text-sm font-medium">Resumen</label>
+      <input type="text" id="resumen" name="resumen" required value="{{ articulo.resumen }}"
+        class="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 outline-none transition focus:border-brand-500 focus:ring-2 focus:ring-brand-500/30">
+    </div>
+
+    <div>
+      <label for="contenido" class="mb-2 block text-sm font-medium">Contenido</label>
+      <textarea id="contenido" name="contenido" rows="8" required
+        class="w-full resize-y rounded-xl border border-white/10 bg-white/5 px-4 py-3 outline-none transition focus:border-brand-500 focus:ring-2 focus:ring-brand-500/30">{{ articulo.contenido }}</textarea>
+    </div>
+
+    <button type="submit" class="rounded-xl bg-brand-600 px-6 py-3 font-semibold transition hover:bg-brand-500">
+      Guardar cambios
+    </button>
+  </form>
+{% endblock %}

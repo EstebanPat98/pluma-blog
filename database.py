@@ -77,3 +77,19 @@ def crear_articulo(titulo, resumen, contenido):
     )
     conn.commit()
     conn.close()
+
+def actualizar_articulo(articulo_id, titulo, resumen, contenido):
+    conn = get_connection()
+    conn.execute(
+        "UPDATE articulos SET titulo = ?, resumen = ?, contenido = ? WHERE id = ?",
+        (titulo, resumen, contenido, articulo_id),
+    )
+    conn.commit()
+    conn.close()
+
+
+def borrar_articulo(articulo_id):
+    conn = get_connection()
+    conn.execute("DELETE FROM articulos WHERE id = ?", (articulo_id,))
+    conn.commit()
+    conn.close()
